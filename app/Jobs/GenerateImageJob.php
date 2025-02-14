@@ -49,7 +49,7 @@ class GenerateImageJob implements ShouldQueue
         // Check the response and update the status in the database
         $aiRequest = AiRequest::where('content_id', $this->contentId)->first();
         if ($aiRequest) {
-            $aiRequest->status = $response->successful() ? 'completed' : 'failed';
+            $aiRequest->status = $response->successful() ? 'pending' : 'failed';
             $aiRequest->save();
         }
     }
